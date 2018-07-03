@@ -49,14 +49,12 @@ Next, you'll tape up the exposed breakout pins to avoid short circuiting them wh
 
 <img src='/Images/06.jpg'/>
 
-### Step 6
-
 Cut some pieces of electrical tape to cover the breakout pins and gently press the screen onto the board to secure it with double sticky tape.
 Use doulbe sided tape, foam tape will make the assembly too thick.
 
 <img src='/Images/07.jpg'/>
 
-### Step 7
+### Step 6
 
 Navigate to [/STL/](/STL/), download and 3D print the housing.
 
@@ -64,23 +62,23 @@ Navigate to [/STL/](/STL/), download and 3D print the housing.
 
 <img src='/Images/09.jpg'/>
 
-### Step 8
+### Step 7
 
 Remove the metal frame from the lcd panel. It will only get caught in the ridges of the 3D print and may actually damage your screen.
 
 <img src='/Images/10.jpg'/>
 
-### Step 9
+### Step 8
 
 Slot the assembly into the body of the case, ribbon cable side first, carefully allowing the case to bend it over the edge.
 
 <img src='/Images/11.jpg'/>
 
-### Step 10
+### Step 9
 
 Desolder the connector from the control board and re-attach the cables in order for the buttons to fit into the rear panel holes. *image coming soon*
 
-### Step 11
+### Step 10
 
 Attach the control board to the main circuit board using foam tape.
 Slide the rear cover on, allowing the control board buttons to "pop through".
