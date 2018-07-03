@@ -8,7 +8,7 @@ A video version of this guide will be available [here](youtube.com/c/nomand).
 
 # License
 
-You do not have permission to re-post, embed or use any content of this guide anywhere without written permission.
+You do not have permission to re-post, embed or host any content of this guide anywhere without written permission.
 You are allowed to link to this guide using either [00.jpg](/Images/00.jpg) or [000.jpg](/Images/000.jpg).
 Follow this guide at your own risk, and observe lipo safety.
 
