@@ -4,7 +4,7 @@
 
 This project offers 3D printing files and instructions to re-house the screen and electrical components extracted from a cheap FPV headset [Eachine VR006](https://www.banggood.com/Eachine-E013-VR006-VR-006-One-antenna-3-Inch-5_8G-40CH-Mini-FPV-Goggles-Build-in-3_7V-500mAh-Battery-p-1239625.html) to use as a stand-alone spectator screen for Drone Racing and other RF hobby applications.
 
-A video version of this guide will be available [here](youtube.com/c/nomand).
+A video version of this guide will be available [here](http://youtube.com/c/nomand).
 
 # License
 
@@ -22,7 +22,7 @@ Remove the SMA cover and the retaining brass nut.
 
 ### Step 2
 
-Underneith, unscrew 4 phillips screws and lift the top half of the plastic body.
+Underneath, unscrew 4 phillips screws and lift the top half of the plastic body.
 
 <img src='/Images/02.jpg'/>
 
@@ -39,18 +39,18 @@ Be careful removing the screen, as it's not attached to the circuit board. Pull 
 
 <img src='/Images/04.jpg'/>
 
-There are two variants of this board - the "diversity" version with two antennas (not real RX diversity) and the single antenna version I have here, my case design is for this verison.
+There are two variants of this board - the "diversity" version with two antennas (not real RX diversity) and the single antenna version I have here, my case design is for this version.
 
 <img src='/Images/05.jpg'/>
 
 ### Step 5
 
-Next, you'll tape up the exposed breakout pins to avoid short circuiting them when you secure the screen to the surface (the back of the lcd is metal).
+Next, you'll tape up the exposed breakout pins to avoid short circuiting them when you secure the screen to the surface (the back of the LCD is metal).
 
 <img src='/Images/06.jpg'/>
 
 Cut some pieces of electrical tape to cover the breakout pins and gently press the screen onto the board to secure it with double sticky tape.
-Use doulbe sided tape, foam tape will make the assembly too thick.
+Use double sided tape, foam tape will make the assembly too thick.
 
 <img src='/Images/07.jpg'/>
 
@@ -64,7 +64,7 @@ Navigate to [/STL/](/STL/), download and 3D print the housing.
 
 ### Step 7
 
-Remove the metal frame from the lcd panel. It will only get caught in the ridges of the 3D print and may actually damage your screen.
+Remove the metal frame from the LCD panel. It will only get caught in the ridges of the 3D print and may actually damage your screen.
 
 <img src='/Images/10.jpg'/>
 
@@ -76,7 +76,7 @@ Slot the assembly into the body of the case, ribbon cable side first, carefully 
 
 ### Step 9
 
-Desolder the connector from the control board and re-attach the cables in order for the buttons to fit into the rear panel holes. *image coming soon*
+De-solder the connector from the control board and re-attach the cables in order for the buttons to fit into the rear panel holes. *image coming soon*
 
 ### Step 10
 
