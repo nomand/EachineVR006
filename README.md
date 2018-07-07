@@ -85,13 +85,12 @@ De-solder the connector from the control board and re-attach the cables in order
 ### Step 10
 
 Add some foam padding to the motherboard to sit against the control board to prevent it from sinking into the case when pressing the buttons.
-Slide the control board to the rear cover.
 
 <img src='/Images/13.jpg'/>
 
 ### Step 11
 
-Slot the rear cover into the bottom rail, aligning the top rail gaps with the case push it in to mesh the rails and slide the cover on.
+Slot the rear cover into the bottom rail, aligning the top rail gaps then push it in to mesh both rails and slide the cover on.
 
 <img src='/Images/14.jpg'/>
 
