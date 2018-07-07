@@ -1,6 +1,6 @@
 # Eachine VR006 Screen Conversion
 
-<img src='/Images/00.jpg'/>
+<img src='/Images/0000.jpg'/>
 
 This project offers 3D printing files and instructions to re-house the screen and electrical components extracted from a cheap FPV headset [Eachine VR006](https://www.banggood.com/Eachine-E013-VR006-VR-006-One-antenna-3-Inch-5_8G-40CH-Mini-FPV-Goggles-Build-in-3_7V-500mAh-Battery-p-1239625.html) to use as a stand-alone spectator screen for Drone Racing and other RF hobby applications.
 
