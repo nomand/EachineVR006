@@ -62,6 +62,8 @@ Navigate to [/STL/](/STL/), download and 3D print the housing.
 
 <img src='/Images/09.jpg'/>
 
+I created this to fit on a 10x10 printing platform, which is common among lowest-end printers. Due to this, the USB charging port sticks out a bit. If you want to make it flush with the side of the case, simply extrude the right wall by 3mm to the left.
+
 ### Step 7
 
 Remove the metal frame from the LCD panel. It will only get caught in the ridges of the 3D print and may actually damage your screen.
@@ -76,12 +78,15 @@ Slot the assembly into the body of the case, ribbon cable side first, carefully 
 
 ### Step 9
 
-De-solder the connector from the control board and re-attach the cables in order for the buttons to fit into the rear panel holes. *image coming soon*
+De-solder the connector from the control board and re-attach the cables in order for the buttons to fit into the rear panel holes. Make sure to note which cable goes where, they're both black.
+
+<img src='/Images/12.jpg'/>
 
 ### Step 10
 
-Attach the control board to the main circuit board using foam tape.
-Slide the rear cover on, allowing the control board buttons to "pop through".
+Add some foam padding to the motherboard to sit against the control board to prevent it from sinking into the case when pressing the buttons.
+Slide the control board to the rear cover.
+Slot the rear cover into the bottom rail, aligning the top rail gaps with the case push it in to mesh the rails and slide the cover on.
 
 ### Done!
 
