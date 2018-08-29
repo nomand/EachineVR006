@@ -1,6 +1,3 @@
-INITIAL_WIDTH = 100;
-INITIAL_HEIGHT = 60;
-
 CUBE_WIDTH_BIGGER = 100;
 CUBE_WIDTH_SMALLER = 20;
 
@@ -12,6 +9,9 @@ X_BIGGER_OFFSET = 11;
 X_OFFSET = -40;
 X_SMALLER_OFFSET = -51;
 
+/* [CORNERS] */
+CORNER_DIAMETER = 8;
+
 /* [BUTTONS] */
 BUTTON_SIZE = 6.00; //5.80
 BUTTON_TOTAL_WIDTH = 31.10;
@@ -22,7 +22,7 @@ SCREW_DIAMETER = 3; // M3 screw
 SCREW_HEAD_DIAMETER = 6.4; // M3 screw
 SCREW_HEAD_THICKNESS = 3.07; // M3 screw
 SCREW_X_OFFSET = 44;
-SCREW_Z_OFFSET = 27.8;
+SCREW_Z_OFFSET = 28.0; //27.8
 
 /* EXTRA_SIZE */
 WIDER_BY = 2;
@@ -34,8 +34,8 @@ EXPLODE = 0;
 $fn = 128;
 
 
-back_united();
-translate([0,-40,0])
+//back_united();
+translate([0,0,0])
 front_united();
 
 module back_united(){
@@ -104,6 +104,86 @@ module extra_border(){
     cube([3.2,2+EXTRA_DEPTH,antenna_side_height]);     
 }
 
+module extra_border_rounded_base_side(){
+    height = 1;
+    x_offset = 51 - CORNER_DIAMETER/2;
+    z_offset = 31 - CORNER_DIAMETER/2; 
+    antenna_limiter = 14.6;    
+    antenna_limiter_z = 6.5;
+    
+    hull(){
+        translate([x_offset-antenna_limiter,0,-(z_offset-antenna_limiter_z)])
+        rotate([90,0,0])
+        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);
+
+        translate([x_offset+1,0,-(z_offset-antenna_limiter_z)])
+        rotate([90,0,0])
+        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);        
+        
+        translate([x_offset+1,0,z_offset])
+        rotate([90,0,0])
+        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);   
+
+        translate([x_offset-antenna_limiter,0,z_offset])
+        rotate([90,0,0])
+        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);            
+    }    
+    
+}
+
+module extra_border_rounded_base(){
+    height = 1;
+    x_offset = 51 - CORNER_DIAMETER/2;
+    z_offset = 31 - CORNER_DIAMETER/2;
+    antenna_limiter = 14.6;
+    
+    color("red")
+    hull(){
+        translate([-x_offset,0,-z_offset])
+        rotate([90,0,0])
+        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);          
+        
+        translate([-x_offset,0,z_offset])
+        rotate([90,0,0])
+        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);       
+    
+        translate([x_offset-antenna_limiter,0,-z_offset])
+        rotate([90,0,0])
+        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);          
+        
+        translate([x_offset-antenna_limiter,0,z_offset])
+        rotate([90,0,0])
+        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);         
+    }
+}
+
+module extra_border_rounded(){
+    //This is the new base shape
+    height = 1;    
+    
+    union(){
+        extra_border_rounded_base();
+        extra_border_rounded_base_side();        
+    }            
+}
+
+module extra_border_rounded_empty_inside(thickness){
+    // This is the new rim
+    
+    base_height = 1;
+    
+    scale([1,thickness,1])
+    difference(){
+        extra_border_rounded();     
+
+        translate([-7,0,0])    
+        cube([82,base_height*2,52], true);     
+        
+        translate([40,0,2])       
+        cube([18,base_height*2,48], true); //53 Z              
+    } 
+}
+
 module extra_stablisers(){
     thickness = 5 + EXTRA_DEPTH;
     z_offset = 24.4;
@@ -152,13 +232,15 @@ module back_body_base(){
     union(){
         rotate([180,0,0])
         difference(){
-            import("BACK.stl", convexity=3); 
+//            import("BACK.stl", convexity=3); 
+            rotate([180,0,0])            
+            extra_border_rounded();            
             
             translate([22.5, -1, -19.4])
             rotate([90,0,0])        
             larger_button_slots();            
         }
-        extra_border();
+//        extra_border_rounded();
         extra_stablisers();
     }
 //    translate([0,4,0])  
@@ -193,7 +275,11 @@ module screw_slots(){
 
 module back_body(){
     difference(){
-        back_body_base();
+        union(){
+            back_body_base();
+            translate([0,-4/2,0])
+            extra_border_rounded_empty_inside(4);
+        }
         translate([0,-4,0])
         screw_slots();
     }    
@@ -225,8 +311,31 @@ module back_middle_part(){
     }    
 }
 
+module usb_slot(){
+    //scaled cube
+    cube([10,20,10],true);
+}
+
+module antenna_slot(){
+//    hulled cylinder
+//    hull(){
+//        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);     
+//        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);                 
+//    }
+}
+
+module minijack_slot(){
+//    hulled cylinder and cube?
+//    cube([20,20,20],true);  
+//    hull(){
+//        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);     
+//        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);                 
+//    }
+}
 
 module front_body_base(){
+    // This is the new rim
+    height = 1;
     union(){
         difference(){
             import("FRONT.stl", convexity=3);
@@ -237,8 +346,26 @@ module front_body_base(){
             cube([120,3,100], true);        
         }
         
-        translate([0,6,0])
-        extra_border();        
+        translate([0,5.2,0])
+        
+        difference(){
+            extra_border_rounded_empty_inside(10.0);
+
+            translate([-8,0,0])    
+            cube([80,height*2,54], true);     
+            
+            translate([40,0,3])       
+            cube([18,height*2,48], true); //53 Z              
+            
+            translate([48,8.2,12.2])            
+            usb_slot();
+            
+            antenna_slot();
+            minijack_slot();
+//            
+//            bottom_led();
+//            upper_led();
+        }
     }   
 }
 
