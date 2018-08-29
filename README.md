@@ -1,10 +1,14 @@
-# Eachine VR006 Screen Conversion
+# Eachine VR006 Screen Conversion (fork with some screws)
+forked from: https://github.com/nomand/EachineVR006
 
 <img src='/Images/0000.jpg'/>
 
 This project offers 3D printing files and instructions to re-house the screen and electrical components extracted from a cheap FPV headset [Eachine VR006](https://www.banggood.com/Eachine-E013-VR006-VR-006-One-antenna-3-Inch-5_8G-40CH-Mini-FPV-Goggles-Build-in-3_7V-500mAh-Battery-p-1239625.html) to use as a stand-alone spectator screen for Drone Racing and other RF hobby applications.
 
-A video version of this guide is available [here](https://youtu.be/1_T4DhQ6De4).
+The original video version of this guide is available [here](https://youtu.be/1_T4DhQ6De4).
+
+This version offers a slightly different housing with screws instead of sliding. 
+Additionally there is no need to re-solder antyhing.
 
 # License
 
@@ -67,6 +71,7 @@ I created this to fit on a 10x10 printing platform, which is common among lowest
 ### Step 7
 
 Remove the metal frame from the LCD panel. It will only get caught in the ridges of the 3D print and may actually damage your screen.
+Note that not all of the version have this frame.
 
 <img src='/Images/10.jpg'/>
 
@@ -76,21 +81,20 @@ Slot the assembly into the body of the case, ribbon cable side first, carefully 
 
 <img src='/Images/11.jpg'/>
 
-### Step 9
+### Step 9 (not needed here)
 
-De-solder the connector from the control board and re-attach the cables in order for the buttons to fit into the rear panel holes. Make sure to note which cable goes where, they're both black.
-
-<img src='/Images/12.jpg'/>
+In the original version, some re-soldering was needed. Please skip this step.
 
 ### Step 10
 
 Add some foam padding to the motherboard to sit against the control board to prevent it from sinking into the case when pressing the buttons.
+Place the buttons from the VR006 into the slots in the back part of the housing.
 
 <img src='/Images/13.jpg'/>
 
 ### Step 11
 
-Slot the rear cover into the bottom rail, aligning the top rail gaps then push it in to mesh both rails and slide the cover on.
+Put the two 3D-printed parts together, place 4 M4 screws into the slots.
 
 <img src='/Images/14.jpg'/>
 
