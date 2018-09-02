@@ -21,7 +21,7 @@ BUTTON_DISTANCE = (BUTTON_TOTAL_WIDTH - 4*BUTTON_SIZE) / 3 + BUTTON_SIZE;
 SCREW_DIAMETER = 3; // M3 screw
 SCREW_HEAD_DIAMETER = 6.4; // M3 screw
 SCREW_HEAD_THICKNESS = 3.07; // M3 screw
-SCREW_X_OFFSET = 44;
+SCREW_X_OFFSET = 46;
 SCREW_Z_OFFSET = 28.0; //27.8
 
 /* EXTRA_SIZE */
@@ -35,8 +35,8 @@ $fn = 128;
 
 
 back_united();
-//translate([0,-16.5,0])
-//front_united();
+translate([0,-16.5,0])
+front_united();
 
 module back_united(){
     union(){
@@ -283,25 +283,27 @@ module screw_heads(){
     slot_diameter = SCREW_HEAD_DIAMETER/2 + 1.0;      
     y_offset = 6;    
 
-    color("red")
-    translate([-SCREW_X_OFFSET,y_offset,SCREW_Z_OFFSET])
-    rotate([90,0,0])
-    screw_head(screw_depth);     
+    union(){      
+        color("red")
+        translate([-SCREW_X_OFFSET,y_offset,SCREW_Z_OFFSET])
+        rotate([90,0,0])
+        screw_head(screw_depth);     
 
-    color("red")
-    translate([-SCREW_X_OFFSET,y_offset,-SCREW_Z_OFFSET])
-    rotate([90,0,0])
-    screw_head(screw_depth);           
-    
-    color("red")
-    translate([SCREW_X_OFFSET,y_offset,SCREW_Z_OFFSET])
-    rotate([90,0,0])
-    screw_head(screw_depth);           
-    
-    color("red")
-    translate([SCREW_X_OFFSET-14,y_offset,-SCREW_Z_OFFSET])
-    rotate([90,0,0])
-    screw_head(screw_depth);    
+        color("red")
+        translate([-SCREW_X_OFFSET,y_offset,-SCREW_Z_OFFSET])
+        rotate([90,0,0])
+        screw_head(screw_depth);             
+        
+        color("red")
+        translate([SCREW_X_OFFSET,y_offset,SCREW_Z_OFFSET])
+        rotate([90,0,0])
+        screw_head(screw_depth);           
+        
+        color("red")
+        translate([SCREW_X_OFFSET-14,y_offset,-SCREW_Z_OFFSET])
+        rotate([90,0,0])
+        screw_head(screw_depth);    
+    }
 }
 
 module back_body(){
@@ -312,10 +314,10 @@ module back_body(){
             extra_border_rounded_empty_inside(4);
         }
         translate([0,-4,0])
-        screw_slots();
+        screw_slots();     
         
         translate([0,-6.5,0])
-        screw_heads();        
+        screw_heads();          
     }    
 
 //    translate([0,-6.5,0])
