@@ -34,9 +34,9 @@ EXPLODE = 0;
 $fn = 128;
 
 
-//back_united();
-translate([0,0,0])
-front_united();
+back_united();
+//translate([0,-16.5,0])
+//front_united();
 
 module back_united(){
     union(){
@@ -69,6 +69,10 @@ module screw_slot(height) {
 //        cylinder(height*2,SCREW_DIAMETER/2, SCREW_DIAMETER/2, true);  
 //    }  
     cylinder(height,SCREW_DIAMETER/2, SCREW_DIAMETER/2, true);      
+}
+
+module screw_head(height) {;
+    cylinder(height,SCREW_HEAD_DIAMETER/2, SCREW_HEAD_DIAMETER/2, true);      
 }
 
 module extra_border(){
@@ -107,10 +111,11 @@ module extra_border(){
 module extra_border_rounded_base_side(){
     height = 1;
     x_offset = 51 - CORNER_DIAMETER/2;
-    z_offset = 31 - CORNER_DIAMETER/2; 
+    z_offset = 32 - CORNER_DIAMETER/2; 
     antenna_limiter = 14.6;    
-    antenna_limiter_z = 6.5;
+    antenna_limiter_z = 7.5;
     
+    color("pink")
     hull(){
         translate([x_offset-antenna_limiter,0,-(z_offset-antenna_limiter_z)])
         rotate([90,0,0])
@@ -134,7 +139,7 @@ module extra_border_rounded_base_side(){
 module extra_border_rounded_base(){
     height = 1;
     x_offset = 51 - CORNER_DIAMETER/2;
-    z_offset = 31 - CORNER_DIAMETER/2;
+    z_offset = 32 - CORNER_DIAMETER/2;
     antenna_limiter = 14.6;
     
     color("red")
@@ -186,9 +191,9 @@ module extra_border_rounded_empty_inside(thickness){
 
 module extra_stablisers(){
     thickness = 5 + EXTRA_DEPTH;
-    z_offset = 24.4;
+    z_offset = 23.6;
     
-    smaller_thickness = 2;
+    smaller_thickness = 3 + EXTRA_DEPTH;
     
     color("violet")
     translate([-30,-thickness/2,z_offset])
@@ -206,9 +211,9 @@ module extra_stablisers(){
     translate([45,-thickness/2,0])
     cube([2,thickness,10], true);     
     
-    color("pink")
-    translate([48,-smaller_thickness/2,12.5])
-    cube([2,smaller_thickness,8], true);         
+    color("purple")
+    translate([50.5,-smaller_thickness/2,12.3])
+    cube([2,smaller_thickness,8.8], true);         
 }
 
 module larger_button(){
@@ -273,6 +278,32 @@ module screw_slots(){
     screw_slot(screw_depth);        
 }
 
+module screw_heads(){
+    screw_depth = 3;
+    slot_diameter = SCREW_HEAD_DIAMETER/2 + 1.0;      
+    y_offset = 6;    
+
+    color("red")
+    translate([-SCREW_X_OFFSET,y_offset,SCREW_Z_OFFSET])
+    rotate([90,0,0])
+    screw_head(screw_depth);     
+
+    color("red")
+    translate([-SCREW_X_OFFSET,y_offset,-SCREW_Z_OFFSET])
+    rotate([90,0,0])
+    screw_head(screw_depth);           
+    
+    color("red")
+    translate([SCREW_X_OFFSET,y_offset,SCREW_Z_OFFSET])
+    rotate([90,0,0])
+    screw_head(screw_depth);           
+    
+    color("red")
+    translate([SCREW_X_OFFSET-14,y_offset,-SCREW_Z_OFFSET])
+    rotate([90,0,0])
+    screw_head(screw_depth);    
+}
+
 module back_body(){
     difference(){
         union(){
@@ -282,7 +313,13 @@ module back_body(){
         }
         translate([0,-4,0])
         screw_slots();
+        
+        translate([0,-6.5,0])
+        screw_heads();        
     }    
+
+//    translate([0,-6.5,0])
+//    screw_heads();            
 }
 
 module back_bigger_part(){
@@ -318,19 +355,31 @@ module usb_slot(){
 
 module antenna_slot(){
 //    hulled cylinder
-//    hull(){
-//        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);     
-//        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);                 
-//    }
+    diameter = 6.2;
+    hull(){
+        cylinder(20,diameter/2, diameter/2, true);     
+        translate([0,10,0])
+        cylinder(20,diameter/2, diameter/2, true);                 
+    }
 }
 
 module minijack_slot(){
-//    hulled cylinder and cube?
-//    cube([20,20,20],true);  
-//    hull(){
-//        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);     
-//        cylinder(height,CORNER_DIAMETER/2, CORNER_DIAMETER/2, true);                 
-//    }
+    diameter = 4.8;
+    union(){
+        translate([0,-2,11.2])
+        cube([8.1,10,20],true);  
+        
+        translate([0,-2.4,0])
+        hull(){
+            cylinder(10,diameter/2, diameter/2, true);     
+            translate([0,10,0])
+            cylinder(10,diameter/2, diameter/2, true);                 
+        }
+    }
+}
+
+module led_slot(){
+    cube([1,0.8,10],true);      
 }
 
 module front_body_base(){
@@ -358,14 +407,20 @@ module front_body_base(){
             cube([18,height*2,48], true); //53 Z              
             
             translate([48,8.2,12.2])            
-            usb_slot();
-            
+            usb_slot();   
+
+            translate([42.6,-0.7,-20])                        
             antenna_slot();
+            
+            translate([0,4.5,-28])                                                    
             minijack_slot();
-//            
-//            bottom_led();
-//            upper_led();
-        }
+
+            translate([-8.5,0.4,-28])                         
+            led_slot();         
+        
+            translate([0,0.4,28])               
+            led_slot();       
+        };    
     }   
 }
 
