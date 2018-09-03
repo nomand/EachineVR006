@@ -34,7 +34,7 @@ EXPLODE = 0;
 $fn = 128;
 
 
-back_united();
+//back_united();
 translate([0,-16.5,0])
 front_united();
 
@@ -237,7 +237,6 @@ module back_body_base(){
     union(){
         rotate([180,0,0])
         difference(){
-//            import("BACK.stl", convexity=3); 
             rotate([180,0,0])            
             extra_border_rounded();            
             
@@ -245,11 +244,8 @@ module back_body_base(){
             rotate([90,0,0])        
             larger_button_slots();            
         }
-//        extra_border_rounded();
         extra_stablisers();
     }
-//    translate([0,4,0])  
-//    import("FRONT.stl", convexity=3);    
 }
 
 module screw_slots(){
@@ -316,11 +312,11 @@ module back_body(){
         translate([0,-4,0])
         screw_slots();     
         
-        translate([0,-6.5,0])
+        translate([0,-6.8,0])
         screw_heads();          
     }    
-
-//    translate([0,-6.5,0])
+//
+//    translate([0,-6.8,0])
 //    screw_heads();            
 }
 
@@ -427,10 +423,14 @@ module front_body_base(){
 }
 
 module front_body(){
+    slots_offset = 8;
     difference(){
         front_body_base();
+        translate([0,slots_offset,0])        
         screw_slots();
     }    
+//    translate([0,slots_offset,0])
+//    screw_slots();    
 }
 
 module front_bigger_part(){
